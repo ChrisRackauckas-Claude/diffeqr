@@ -50,23 +50,23 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/julia
-          key: ${{ runner.os }}-julia-1.10.10
+          key: ${{ runner.os }}-julia-1.11.6
 
       - name: Install Julia
         run: |
           if [ "${{ runner.os }}" = "Linux" ]; then
-            JULIA_URL="https://julialang-s3.julialang.org/bin/linux/x64/1.10/julia-1.10.10-linux-x86_64.tar.gz"
+            JULIA_URL="https://julialang-s3.julialang.org/bin/linux/x64/1.11/julia-1.11.6-linux-x86_64.tar.gz"
           elif [ "${{ runner.os }}" = "macOS" ]; then
             if [ "${{ runner.arch }}" = "ARM64" ]; then
-              JULIA_URL="https://julialang-s3.julialang.org/bin/mac/aarch64/1.10/julia-1.10.10-macaarch64.tar.gz"
+              JULIA_URL="https://julialang-s3.julialang.org/bin/mac/aarch64/1.11/julia-1.11.6-macaarch64.tar.gz"
             else
-              JULIA_URL="https://julialang-s3.julialang.org/bin/mac/x64/1.10/julia-1.10.10-mac64.tar.gz"
+              JULIA_URL="https://julialang-s3.julialang.org/bin/mac/x64/1.11/julia-1.11.6-mac64.tar.gz"
             fi
           elif [ "${{ runner.os }}" = "Windows" ]; then
-            JULIA_URL="https://julialang-s3.julialang.org/bin/winnt/x64/1.10/julia-1.10.10-win64.tar.gz"
+            JULIA_URL="https://julialang-s3.julialang.org/bin/winnt/x64/1.11/julia-1.11.6-win64.tar.gz"
           fi
           
-          if [ ! -d ~/julia/julia-1.10.10 ]; then
+          if [ ! -d ~/julia/julia-1.11.6 ]; then
             curl -L $JULIA_URL | tar -xzf - -C ~/
             mv ~/julia-* ~/julia
           fi
